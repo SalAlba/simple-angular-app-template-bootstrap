@@ -27,7 +27,32 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-# Add Bootstrap [[src]](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
+## Git
+
++ Quick setup — if you’ve done this kind of thing before
+
+```
+https://github.com/SalAlba/simple-angular-app-template-bootstrap.git
+```
+
++ or create a new repository on the command line.
+``` bash
+echo "# simple-angular-app-template-bootstrap" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/SalAlba/simple-angular-app-template-bootstrap.git
+git push -u origin master
+
+```
+
++ or push an existing repository from the command line
+``` bash
+git remote add origin https://github.com/SalAlba/simple-angular-app-template-bootstrap.git
+git push -u origin master
+```
+
+## Add Bootstrap [[src]](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
 
 
 1. add bootstrap css to index.html.
