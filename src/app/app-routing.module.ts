@@ -10,8 +10,8 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then(mod => mod.HomeModule)
   },
   {
-    path: 'postes',
-    loadChildren: () => import('./modules/postes/postes.module').then(mod => mod.PostesModule)
+    path: 'poste',
+    loadChildren: () => import('./modules/poste/poste.module').then(mod => mod.PosteModule)
   },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

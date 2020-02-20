@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from "./core/core.module";
 import { HomeModule } from "./modules/home/home.module";
-import { PostesModule } from "./modules/postes/postes.module";
+import { PosteModule } from "./modules/poste/poste.module";
 
 // components ...
 import { AppComponent } from './app.component';
@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     CoreModule,
     HomeModule, // in anular page ex. no import !!!  https://stackblitz.com/angular/aqqyljyojye
-    PostesModule,
+    PosteModule,
     AppRoutingModule,
   ],
   exports: [
