@@ -1,4 +1,4 @@
-# App
+# 1. App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
@@ -27,7 +27,85 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-## Git
+## Deploy angular app to server [issue #1]
+
+:warning: text in <> mean you have to change it.
+
+
+1. build angular app
+
+``` bash
+    $ ng build --prod
+```
+
+for a production build.
+
+``` bash
+    $ ng build --prod --base-href /
+```
+
+2. create a dir for html page in server, and put there the all the content in folder `./dist/app/*`
+
+``` bash
+    $ mkdir /var/www/html/<domain-name>
+
+    # ex.
+    $ mkdir /var/www/html/salalba.cktech.eu
+```
+
+3. create conf file for virtual host.
+
+``` bash
+    $ vi /etc/apache2/sites-available/<domain-name>.conf
+
+    # ex.
+
+    $ vi /etc/apache2/sites-available/salalba.cktech.eu.conf
+
+```
+
+and then add
+
+``` conf
+<VirtualHost *:80>
+#       ProxyPreserveHost On
+#       ProxyRequests Off
+#       ServerAdmin webmaster@localhost
+        #ServerName example.com
+        #ServerAlias www.example.pl
+        ServerAdmin webmaster@localhost
+        ServerName salalba.cktech.eu
+        #ServerAlias www.salalba.cktech.eu
+        #ServerAlias salalba.cktech.eu
+        DocumentRoot /var/www/html/salalba.cktech.eu
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        <Directory "/var/www/html">
+                AllowOverride All
+        </Directory>
+</VirtualHost>
+
+```
+
+4. add virtual host to apache
+
+``` bash
+    $ a2ensite <virtual-host-conf-file>
+
+    # ex.
+    $ a2ensite salalba.cktech.eu.conf
+```
+
+5. restart apache.
+
+``` bash
+    $ service apache2 restart
+```
+
+you can now check your website [click](http://salalba.cktech.eu/)
+
+
+# 2. Git
 
 + Quick setup — if you’ve done this kind of thing before
 
@@ -51,6 +129,8 @@ git push -u origin master
 git remote add origin https://github.com/SalAlba/simple-angular-app-template-bootstrap.git
 git push -u origin master
 ```
+
+# 3. Other informations
 
 ## Add Bootstrap [[src]](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
 
