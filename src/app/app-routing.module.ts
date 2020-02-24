@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'poste',
     loadChildren: () => import('./modules/poste/poste.module').then(mod => mod.PosteModule)
   },
+  {
+    path: 'authentication',
+    loadChildren: () => import('./modules/authentication/authentication.module').then(mod => mod.AuthenticationModule)
+  },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
