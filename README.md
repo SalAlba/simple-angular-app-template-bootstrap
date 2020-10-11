@@ -105,6 +105,53 @@ and then add
 you can now check your website [click](http://salalba.cktech.eu/)
 
 
+
+## Add to server
+
+* add project to
+
+```
+mkdir /var/www/brainiverse.cktech.eu/html
+```
+
+* create `/etc/nginx/sites-available/brainiverse.cktech.eu`
+
+``` 
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/brainiverse.cktech.eu/html/;
+        index index.html index.html index.nginx-debian.html;
+
+        server_name brainiverse.cktech.eu www.brainiverse.cktech.eu;
+
+
+        #MAIN
+        location / {
+            try_files $uri $uri/ @ci_index;
+        }
+
+        location @ci_index{
+            rewrite ^(.*) /index.html?$1 last;
+        }
+}
+
+```
+
+* then add link
+``` bash
+$ sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+```
+
+
+* run server
+``` bash
+$ sudo systemctl restart nginx
+$ sudo systemctl status nginx
+```
+
+
 # 2. Git
 
 + Quick setup — if you’ve done this kind of thing before
@@ -159,3 +206,6 @@ Using the icons in HTML
 ``` HTML
 <i class="material-icons">face</i>
 ```
+
+
+
