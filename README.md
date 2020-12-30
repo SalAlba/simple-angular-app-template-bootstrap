@@ -152,6 +152,73 @@ $ sudo systemctl status nginx
 ```
 
 
+# Docker
+
+
+## To build image and container
+
+``` bash
+$ docker build -t angular-app .
+```
+
+``` bash
+$ docker run --name ng-app-container -d -p 2020:80 angular-app
+```
+
+Navigate to `http://localhost:2020/`.
+
+
+## Build docker image and push into Github packge [src1](https://medium.com/better-programming/7-steps-to-dockerize-your-angular-9-app-with-nginx-915f0f5acac)
+
+1. create tokan [here](https://github.com/settings/tokens)
+
+2. login to GitHub Docker Registry
+
+```
+$ docker login -u USERNAME -p TOKEN docker.pkg.github.com
+```
+
+```
+
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /home/$USER/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+```
+
+3. get the docker image ID
+
+```
+$ docker images
+```
+
+``` bash
+REPOSITORY          TAG                IMAGE ID       CREATED             SIZE
+angular-app         latest             14acbf473de5   3 minutes ago       134MB
+
+```
+
+4. publish docker image
+
+``` bash
+$ docker tag IMAGE_ID docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
+
+//ex.
+$ docker tag 14acbf473de5 docker.pkg.github.com/salalba/simple-angular-app-template-bootstrap/angular-app:0.0.1
+```
+
+5. push docker image into github.
+
+``` bash
+
+$ docker push docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
+
+// ex.
+$ docker push docker.pkg.github.com/salalba/simple-angular-app-template-bootstrap/angular-app:0.0.1
+
+```
+
 # 2. Git
 
 + Quick setup — if you’ve done this kind of thing before
