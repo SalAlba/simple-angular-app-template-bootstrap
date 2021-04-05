@@ -48,6 +48,9 @@ for a production build.
 
 ``` bash
     $ mkdir /var/www/html/<domain-name>
+    $ sudo chown -R $USER:$USER /var/www/<domain-name>
+    $ sudo chmod -R 755 /var/www/<domain-name>
+
 
     # ex.
     $ mkdir /var/www/html/salalba.cktech.eu
